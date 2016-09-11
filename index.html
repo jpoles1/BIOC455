@@ -1,16 +1,34 @@
 <html>
   <head>
     <title>MathJax Github Viewer</title>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script>
       $(function(){
-        $.get("HW3.md.html", function(){
-          body.html()
+        var doc = location.hash.slice(1);
+        $.get(doc+"/"+doc+".html", function(data){
+          $("#content").html(data)
         })
       })
     </script>
+    <style>
+      #content{
+        padding: 20px;
+        width: 90%;
+        margin: auto;
+        column-count: 2;
+        column-gap: 20px;
+        border: 1px solid black;
+        text-align: center;
+        column-rule: 1px solid #222;
+      }
+    </style>
   </head>
   <body>
-    
+    <div id="content">
+
+    </div>
   </body>
 </html>
