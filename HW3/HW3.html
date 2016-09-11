@@ -1,4 +1,5 @@
-<h3>Question 1A</h3>
+<h3>Question 1</h3>
+<h4><i>Part A</i></h4>
 \[
   \\
   \frac{dp}{dt} + \gamma p = \alpha - \alpha e^{-\mu t}
@@ -34,28 +35,28 @@ And substitute it in to a manipulated form:
   {e^{\gamma t + C_2}}
   \\
   \int \alpha e^{-\mu t} e^{\gamma t + C_2}dt = \frac{\alpha e^{t(\gamma - \mu) + C_2}}
-  {\gamma - \mu}
+  {\gamma - \mu} + C_3
   \\
-  p(t) = \frac{\alpha \gamma e^{\gamma t + C_2} - \frac{\alpha e^{t(\gamma - \mu) + C_2}}
-  {\gamma - \mu}- C_1}
+  p(t) = \frac{\alpha \gamma^{-1} e^{\gamma t + C_2} - \frac{\alpha e^{t(\gamma - \mu) + C_2}}
+  {\gamma - \mu}+C_3-C_1}
   {e^{\gamma t + C_2}}
   \\
-  p(t) = \alpha \gamma - \frac{\alpha e^{- \mu t}}
-  {\gamma - \mu} - e^{-\gamma t + C_3}
+  p(t) = \frac{\alpha}{\gamma} + \frac{\alpha e^{- \mu t}}
+  {\mu - \gamma} - e^{-\gamma t}C_4
 \]
 When t=0 then p(t)=0:
 \[
-  p(0) = 0 = \alpha\gamma - \frac{\alpha}{\gamma - \mu} - e^{C_3}
+  p(0) = 0 = \frac{\alpha}{\gamma} + \frac{\alpha}{\mu - \gamma} - C_4
   \\
-  C_3 = ln(\alpha\gamma - \frac{\alpha}{\gamma - \mu})
+  C_4 = \frac{\alpha}{\gamma} + \frac{\alpha}{\mu - \gamma}
 \]
 Therefore:
 \[
-  p(t) = \alpha \gamma - \frac{a^{-\mu t}}{\gamma - \mu} - e^{-\gamma t} (\alpha\gamma - \frac{\alpha}{\gamma - \mu})
-  \\
-  p(t) = \alpha \gamma (1 - e^{-\gamma t} )- \frac{a^{-\mu t}}{\gamma - \mu}  - \frac{\alpha}{\gamma - \mu}e^{-\gamma t}
+  p(t) = \frac{\alpha}{\gamma} + \frac{\alpha e^{- \mu t}}
+  {\mu - \gamma} - e^{-\gamma t}\frac{\alpha}{\gamma} - e^{-\gamma t}\frac{\alpha}{\mu - \gamma}
 \]
+<h4><i>Part B</i></h4>
 When \(\mu = \gamma\) then:
 \[
-  p(t) = \alpha \gamma - \frac{a^{-\mu t}}{\gamma - \mu ln(\alpha)}
+  p(t) = undefined
 \]
