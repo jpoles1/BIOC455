@@ -1,4 +1,4 @@
-Note that: \(p(t) = \gamma\)
+##Question 1A
 \[
   \\
   \frac{dp}{dt} + \gamma p = \alpha - \alpha^{-\mu t}
