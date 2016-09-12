@@ -10,7 +10,15 @@
         var doc = location.hash.slice(1);
         $.get(doc+"/"+doc+".html", function(data){
           $("#content").html(data)
+        }).fail(function(){
+          $("body").html("<h1>Invalid document URL</h1>")
         })
+        document.title = doc + " - MathJax Github Viewer"
+        var currentTime = new Date()
+        var month = currentTime.getMonth() + 1
+        var day = currentTime.getDate()
+        var year = currentTime.getFullYear()
+        $("#header").append(month+"/"+day+"/"+year+"<br>BIOC455 - "+doc)
       })
     </script>
     <style>
@@ -24,9 +32,17 @@
         text-align: center;
         column-rule: 1px solid #222;
       }
+      #header{
+        float: right;
+        padding: 5px;
+        text-align: right;
+      }
     </style>
   </head>
   <body>
+    <div id="header">
+      Jordan Poles<br>
+    </div><br>
     <div id="content">
 
     </div>
