@@ -1,0 +1,124 @@
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      extensions: ["mhchem.js"]
+    }
+  });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<h4><i>Examining a System with Negative Feedback Regulation</i></h4>
+<br>
+
+\[
+U \ce{->[\alpha_u] U+m}
+\\
+\ce{m ->[\sigma] m + x}
+\\
+\ce{x^2 -> x_2}
+\\
+\ce{x_2 -> \phi}; \quad \ce{x -> \phi}; \quad \ce{m -> \phi}
+\\
+\dot{m} = \alpha_u U - \gamma_m m
+\dot{x} = \sigma m - \gamma_1 x - 2 k_d x^2 + 2k_{-d}x_2+k_{-b}B-\gamma_2 x_2
+\\
+\dot{U} = -k_b x_2 U + k_{-b}B
+\\
+\dot{B} = k_b x_2 U - k_-b B
+\\
+D_0 = U + B
+\]
+
+<p>Using the QSSA:</p>
+
+\[
+  k_d x^2 = k_{-d}x_2 => x_2 = \frac{k_d}{k_{-d}} x^2
+  \\
+  k_b x_2 U = k_{-b} B = k_{-b} (D_0 - U)
+  \\
+  U = \frac{D_0}{1+(x/c)^2}; \quad c = \sqrt{\frac{k_{-b} k_{-d}}{k_b k_d}}
+  \\
+  m = \alpha_u U/\gamma_m = \frac{\alpha_u D_0/\gamma_m}{1+(x/c)^2}
+  \\
+  \alpha = \frac{\sigma \alpha_u D_0}{\gamma_m}
+  \\
+  \dot{x} = \frac{\alpha}{(1+(x/c)^2)} - \gamma_1 x
+\]
+
+<h4><i>Fixing Problems with the QSSA:</i></h4>
+<p>
+  We want to avoid the problems of mixed manifolds.
+  Instead of examining dynamics of x which is both fast and slow, instead look at...
+</p>
+
+\[
+  T = x + 2 x_2 + 2B
+\]
+
+<p>This is total concentration of x in any form. Therefore...</p>
+
+\[
+  \dot{T} = \sigma m - \gamma_1 x - 2 \gamma_2 x_2
+  \\
+  T = x + 2 \frac{k_d}{k_{-d}} x^2 + \frac{2 D_0 (x/c)^2}{1+(x/2)^2}
+\]
+
+<p>If \(D_0\) is much less than x...</p>
+
+\[
+  T = x + 2 \frac{k_d}{k_{-d}} x^2
+  \\
+  \dot{T} = \frac{dT}{dx} \frac{dx}{dt}
+  \\
+  \frac{dT}{dx} = 1 + 4 \frac{k_d}{k_{-d}} x
+  \\
+  (1 + 4 \frac{k_d}{k_{-d}} x) \dot{x} = \sigma m - \gamma_1 x - 2 \gamma_2 x_2
+  \\
+  (1 + 4 \frac{k_d}{k_{-d}} x) \dot{x} = \frac{\alpha}{1+(x/c)^2} - \gamma_1 x - 2 \gamma_2 \frac{k_d}{k_{-d}} x^2
+\]
+
+<p>
+  When feedback is involved, one should use "pQSSA" or "pre-factor QSSA".
+  In general:
+    <ol>
+      <li>Write down total amount of protein (T) as a function of the monomer, using equilibrium of fast reactions.</li>
+      <li>Get T(X) and find \(\frac{dT}{dx}\)</li>
+      <li>
+        Find the slow rxns that create or destroy protein.
+        <br>
+        \[\dot{T} = (prod) - (degradation)\]
+      </li>
+      <li>
+        Then we find:
+        \[
+          \frac{dT}{dx} \dot{x} = (prod) - (degradation)
+        \]
+      </li>
+    </ol>
+</p>
+
+<h4><i>Proteolysis</i></h4>
+
+\[
+  \ce{P + E <=>[k_1][k_2] E' ->[\delta] E}
+\]
+
+<p>Assuming that E' is in equilibrium</p>
+
+\[
+  \dot{E'} = k_1 P E - k_2 E' - \delta E'
+  \\
+  E_{tot} = E + E'
+  \\
+  k_1 P E = k_2 E' + \delta E'
+  \\
+  k_1 P [E_tot - E'] = k_2 E' + \delta E'
+  \\
+  E' = \frac{P E_{tot}}{(\frac{k_2 + \delta}{k_1}) + P}
+  \\
+  \dot{P} = -\delta E' = -\frac{\delta E_{tot} P}{\frac{k_2 + \delta}{k_1} + P} = -\frac{V_{Max} P}{K_m + p}
+  \\
+  \dot{P} = f'(P) - \gamma P -\frac{V_{Max} P}{K_m + P}
+\]
