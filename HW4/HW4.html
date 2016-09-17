@@ -14,11 +14,11 @@
 <p>Formulate the chemical reactions for regulation of y:</p>
 
 \[
-  \ce{x^2 <=>[k_x][k_{-x}]  x_2}
+  \ce{2x <=>[k_x][k_{-x}]  x_2}
   \\
   D_y = U_y + B_y; \quad U_y + \ce{x_2 <=>[k_{bx}][k_{-bx}] }B_y
   \\
-  U_y\ce{ ->[k_{\beta y}]  y}
+  U_y\ce{ ->[\beta y]  y}
   \\
   \ce{y ->[\gamma_y] \phi}
 \]
@@ -30,7 +30,7 @@
   \\
   U_x +\ce{y <=>[k_{by}][k_{-by}] }{B1}_x+\ce{y <=>[k_{by}][k_{-by}]} {B2}_x
   \\
-  {B2}_x\cf{ ->[k_{\beta x}]} x
+  {B2}_x\cf{ ->[\beta x]} x
   \\
   \ce{x ->[\gamma_x] \phi}
 \]
@@ -39,9 +39,23 @@
 <p>The QSSA dictates that:</p>
 
 \[
-\dot{x} = \frac{dx}{dt} = {B2}_x k_{\beta x} - \gamma_x x
+\dot{x_2} = x^2 k_x - x_2 k_{-x} = 0
 \\
-\dot{y} = \frac{dy}{dt} = B_y k_{\beta y} - \gamma_y y
+\dot{U_y} = B_y k_{-bx} - U_y x_2 k_{bx} = 0
+\\
+\dot{{B2}_x} = {B1}_x y k_{by} - {B2}_x k_{-by} = 0
+\\
+U_y = B_y \frac{k_{-bx}}{x_2 k_{bx}}; \quad B_y = D_y - U_y; \quad U_y = (D_y - U_y) \frac{k_{-bx}}{x_2 k_{bx}}
+\\
+{B2}_x = {B1}_x y \frac{k_{by}}{k_{-by}}
+\]
+
+<p>Therefore we can derive:</p>
+
+\[
+\dot{y} = \frac{dy}{dt} = B_y \beta_y - \gamma_y y
+\\
+\dot{x} = \frac{dx}{dt} = {B2}_x \beta_x - \gamma_x x
 \]
 
 <h3>Question 3</h3>
