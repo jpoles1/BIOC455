@@ -45,17 +45,37 @@
 \\
 \dot{{B2}_x} = {B1}_x y k_{by} - {B2}_x k_{-by} = 0
 \\
+\dot{{B1}_x} = {B2}_x k_{-by} - {B1}_x y k_{by} + U_x y k_{by} - {B1}_x k_{-by} = 0
+\]
+
+<p>We can manipulate algebraicly as follows for transcription of y:</p>
+
+\[
 U_y = B_y \frac{k_{-bx}}{x_2 k_{bx}}; \quad B_y = D_y - U_y; \quad U_y = (D_y - U_y) \frac{k_{-bx}}{x_2 k_{bx}}
 \\
+U_y + U_y \frac{k_{-bx}}{x_2 k_{bx}} = U_y(1+\frac{k_{-bx}}{x_2 k_{bx}}) = D_y \frac{k_{-bx}}{x_2 k_{bx}}
+\\
+c_x = \sqrt{\frac{k_{-bx}k_{-x}}{k_{bx}k_{x}}}; \quad U_y = \frac{D_y}{(x/c_x)^2 + 1}
+\]
+
+<p>Likewise for transcription of x:</p>
+
+\[
 {B2}_x = {B1}_x y \frac{k_{by}}{k_{-by}}
+\\
+{B2}_x k_{-by} + U_x y k_{by} = {B1}_x k_{-by} + {B1}_x y k_{by} = {B1}_x(k_{-by} + y k_{by})
+\\
+{B1}_x = \frac{{B2}_x k_{-by} + U_x y k_{by}}{k_{-by} + y k_{by}} = \frac{D_x (y/c_y)}{(y/c_y)+1}; \quad c_y=\frac{k_{-by}}{k_{by}}
+\\
+{B2}_x = \frac{D_x (y/c_y)}{(y/c_y)+1} y \frac{k_{by}}{k_{-by}} = \frac{D_x (y/c_y)}{(y/c_y)+1} \frac{y}{c_y}
 \]
 
 <p>Therefore we can derive:</p>
 
 \[
-\dot{y} = \frac{dy}{dt} = B_y \beta_y - \gamma_y y
+\dot{y} = \frac{dy}{dt} = U_y \beta_y - \gamma_y y = \frac{D_y \beta_y}{(x/c_x)^2 + 1} - \gamma_y y
 \\
-\dot{x} = \frac{dx}{dt} = {B2}_x \beta_x - \gamma_x x
+\dot{x} = \frac{dx}{dt} = \frac{D_x\beta_x (y/c_y)^2}{(y/c_y)+1} - \gamma_x x
 \]
 
 <h3>Question 3</h3>
