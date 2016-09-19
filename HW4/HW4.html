@@ -48,7 +48,7 @@
 \dot{{B1}_x} = {B2}_x k_{-by} - {B1}_x y k_{by} + U_x y k_{by} - {B1}_x k_{-by} = 0
 \]
 
-<p>We can manipulate algebraicly as follows for transcription of y:</p>
+<p>I can manipulate algebraicly as follows for transcription of y:</p>
 
 \[
 U_y = B_y \frac{k_{-bx}}{x_2 k_{bx}}; \quad B_y = D_y - U_y; \quad U_y = (D_y - U_y) \frac{k_{-bx}}{x_2 k_{bx}}
@@ -70,7 +70,7 @@ c_x = \sqrt{\frac{k_{-bx}k_{-x}}{k_{bx}k_{x}}}; \quad U_y = \frac{D_y}{(x/c_x)^2
 {B2}_x = \frac{D_x (y/c_y)}{(y/c_y)+1} y \frac{k_{by}}{k_{-by}} = \frac{D_x (y/c_y)}{(y/c_y)+1} \frac{y}{c_y}
 \]
 
-<p>Therefore we can derive:</p>
+<p>Therefore I can derive:</p>
 
 \[
 \dot{y} = \frac{dy}{dt} = U_y \beta_y - \gamma_y y = \frac{D_y \beta_y}{(x/c_x)^2 + 1} - \gamma_y y
@@ -79,10 +79,19 @@ c_x = \sqrt{\frac{k_{-bx}k_{-x}}{k_{bx}k_{x}}}; \quad U_y = \frac{D_y}{(x/c_x)^2
 \]
 
 <h3>Question 3</h3>
-<p>In order to avoid the issues that arise when using the QSSA in the case of negative feedback regulation, we utilize the pQSSA assumptions. We start with calculating the flux of x through the system.</p>
+<p>In order to avoid the issues that arise when using the QSSA in the case of negative feedback regulation, I utilize the pQSSA assumptions. I start with calculating the distribution of protein x through the system.</p>
 
 \[
 x_2 = x^2 \frac{k_x}{k_{-x}}; \quad T_x = x + 2x_2 + 2{B}_y = x + 2x^2 \frac{k_x}{k_{-x}} + 2{B}_y
 \\
-\frac{dT_X}{dt} = \frac{dx}{dt} +  + 0
+B_y = U_y \frac{x_2 k_{bx}}{k_{-bx}} = U_y x^2 \frac{k_x k_{bx}}{k_{-bx}k_{-x}} = U_y (x/c_x)^2 = \frac{D_y (x/c_x)^2}{(x/c_x)^2+1}
+\\
+T_x = x + \frac{2x^2 k_x}{k_{-x}} + \frac{2D_y (x/c_x)^2}{(x/c_x)^2+1}
+\]
+
+<h3>Question 4</h3>
+<p>I then calculate the distribution of protein y in the system.</p>
+
+\[
+T_y = y + {B1}_x + 2 {B2}_x
 \]
