@@ -63,9 +63,13 @@ c_x = \sqrt{\frac{k_{-bx}k_{-x}}{k_{bx}k_{x}}}; \quad U_y = \frac{D_y}{(x/c_x)^2
 \[
 {B2}_x = {B1}_x y \frac{k_{by}}{k_{-by}}
 \\
-{B2}_x k_{-by} + U_x y k_{by} = {B1}_x k_{-by} + {B1}_x y k_{by} = {B1}_x(k_{-by} + y k_{by})
+{B2}_x k_{-by} + U_x y k_{by} = {B1}_x k_{-by} + {B1}_x y k_{by}
 \\
-{B1}_x = \frac{{B2}_x k_{-by} + U_x y k_{by}}{k_{-by} + y k_{by}} = \frac{D_x (y/c_y)}{(y/c_y)+1}; \quad c_y=\frac{k_{-by}}{k_{by}}
+= {B1}_x(k_{-by} + y k_{by})
+\\
+{B1}_x = \frac{{B2}_x k_{-by} + U_x y k_{by}}{k_{-by} + y k_{by}} = \frac{D_x (y/c_y)}{(y/c_y)+1}
+\\
+c_y=\frac{k_{-by}}{k_{by}}
 \\
 {B2}_x = \frac{D_x (y/c_y)}{(y/c_y)+1} y \frac{k_{by}}{k_{-by}} = \frac{D_x (y/c_y)}{(y/c_y)+1} \frac{y}{c_y}
 \]
@@ -82,9 +86,9 @@ c_x = \sqrt{\frac{k_{-bx}k_{-x}}{k_{bx}k_{x}}}; \quad U_y = \frac{D_y}{(x/c_x)^2
 <p>In order to avoid the issues that arise when using the QSSA in the case of negative feedback regulation, I utilize the pQSSA assumptions. I start with calculating the distribution of protein x through the system.</p>
 
 \[
-x_2 = x^2 \frac{k_x}{k_{-x}}; \quad T_x = x + 2x_2 + 2{B}_y = x + 2x^2 \frac{k_x}{k_{-x}} + 2{B}_y
+T_x = x + 2x_2 + 2{B}_y = x + 2x^2 \frac{k_x}{k_{-x}} + 2{B}_y
 \\
-B_y = U_y \frac{x_2 k_{bx}}{k_{-bx}} = U_y x^2 \frac{k_x k_{bx}}{k_{-bx}k_{-x}} = U_y (x/c_x)^2 = \frac{D_y (x/c_x)^2}{(x/c_x)^2+1}
+B_y = U_y x^2 \frac{k_x k_{bx}}{k_{-bx}k_{-x}} = U_y (x/c_x)^2 = \frac{D_y (x/c_x)^2}{(x/c_x)^2+1}
 \\
 T_x = x + \frac{2x^2 k_x}{k_{-x}} + \frac{2D_y (x/c_x)^2}{(x/c_x)^2+1}
 \]
@@ -93,5 +97,12 @@ T_x = x + \frac{2x^2 k_x}{k_{-x}} + \frac{2D_y (x/c_x)^2}{(x/c_x)^2+1}
 <p>I then calculate the distribution of protein y in the system.</p>
 
 \[
-T_y = y + {B1}_x + 2 {B2}_x
+T_y = y + {B1}_x + 2 {B2}_x = y + \frac{D_x (y/c_y) + 2D_x (y/c_y)^2}{(y/c_y)+1}
+\]
+
+<h3>Question 5</h3>
+<p>We can now use the prior two calculations in order to represent this system with the pQSSA.</p>
+
+\[
+
 \]
