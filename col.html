@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>MathJax Github Viewer</title>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        CommonHTML: { linebreaks: { automatic: true } },
+        "HTML-CSS": { linebreaks: { automatic: true } },
+        SVG: { linebreaks: { automatic: true } },
+        TeX: {
+          extensions: ["mhchem.js"]
+        }
+      });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script>
+      $(function(){
+        var doc = location.hash.slice(1);
+        $.get(doc+"/"+doc+".html", function(data){
+          $("#content").html(data)
+        }).fail(function(){
+          $("body").html("<h1>Invalid document URL</h1>")
+        })
+        document.title = doc + " - MathJax Github Viewer"
+        var currentTime = new Date()
+        var month = currentTime.getMonth() + 1
+        var day = currentTime.getDate()
+        var year = currentTime.getFullYear()
+        $("#header").append(month+"/"+day+"/"+year+"<br>BIOC455 - "+doc)
+      })
+    </script>
+    <style>
+      #content{
+        padding: 20px;
+        width: 90%;
+        margin: auto;
+        column-count: 2;
+        column-gap: 20px;
+        border: 1px solid black;
+        text-align: center;
+        column-rule: 1px solid #222;
+      }
+      #header{
+        float: right;
+        padding: 5px;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      Jordan Poles<br>
+    </div><br>
+    <div id="content">
+
+    </div>
+  </body>
+</html>
