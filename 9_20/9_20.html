@@ -1,0 +1,78 @@
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      extensions: ["mhchem.js"]
+    }
+  });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+Cannonical approach:
+<p>DNA -> Many Different Phenotypes.</p>
+
+Considering the simple positive feedback loop:
+\[
+  B_x \ce{->} B_x + x
+  \\
+  U_x + x \ce{->[k_x][k_{-x}]} B_x
+\]
+
+Therefore:
+
+\[
+  \dot{x} = \alpha_0 + \frac{\alpha (\frac{x}{c})^\beta}{1+(\frac{x}{c})^\beta} - \gamma x
+  \\
+  x = \frac{\alpha_0}{\gamma} + \frac{\frac{\alpha}{\gamma} (\frac{x}{c})^\beta}{1+(\frac{x}{c})^\beta}
+\]
+<h5>What are the fixed points?</h5>
+<br>
+For beta = 1, [x] is linear<br>
+For beta near 1, [x] is logistic<br>
+For beta >> 1, [x] is sigmoidal<br>
+<i>For latter two cases, asymptote is at \(\frac{1}{\gamma}(\alpha_0 + \alpha)\);
+and at 0, [x] = \(\frac{\alpha_0}{\gamma}\)</i>
+<br>
+\[
+  x(\frac{\gamma}{c}x + \gamma - \frac{\alpha}{c})
+\]
+<br>
+Therefore, fixed points are present at:
+
+\[
+  \bar{x} = 0; \quad \bar{x} = \frac{\alpha}{\gamma} - c
+  \\
+  x = \bar{x} + \epsilon(t)
+  \\
+  \dot{\epsilon} = \frac{\alpha(\bar{x} + \epsilon)/c}{1 + \frac{\bar{x} + \epsilon}{c}}  - \gamma(\bar{x} + \epsilon)
+  \\
+  = \frac{\alpha \frac{\bar{x}}{c}}{1+\frac{\bar{x}}{c}} - \gamma \bar{x} + \epsilon \frac{d}{d\epsilon}[\frac{\alpha(\bar{x} + \epsilon)/c}{1 + \frac{\bar{x} + \epsilon}{c}}] - \gamma \epsilon
+  \\
+  \frac{\alpha \frac{\bar{x}}{c}}{1+\frac{\bar{x}}{c}} = 0  \text{ by definintion}
+  \\
+  \dot{\epsilon} = \epsilon[\frac{(\alpha/c)}{(1 + \frac{x}{c})^2} - \gamma]
+\]
+
+At the fixed point x=0, this final expression becomes:
+
+\[
+  \dot{\epsilon} = \epsilon(\frac{a}{c} - \gamma)
+  \\
+  \lambda_1 = \frac{a}{c} - \gamma
+  \\
+  \text{stable if: } \frac{a}{c} < \gamma
+\]
+
+At the fixed point \(\bar{x}_2 = \frac{\alpha}{\gamma} - c\), this final expression becomes:
+
+\[
+  \lambda_2 = \frac{c \gamma^2}{\alpha} - \gamma
+  \\
+  \text{stable if: } \frac{c \gamma^2}{\alpha} < \gamma
+\]
+
+<p>
+  This is not a bistable system because of the fact that the two fixed points cannot coexist.
+  Only one of these two points of stability can be reached in any given system of this kind.
+</p>
