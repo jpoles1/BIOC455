@@ -28,7 +28,7 @@
   \\
   U_x +\ce{y <=>[k_{by}][k_{-by}] }{B1}_x+\ce{y <=>[k_{by}][k_{-by}]} {B2}_x
   \\
-  {B2}_x\cf{ ->[\beta x]} x; \quad \ce{x ->[\gamma_x] \phi}
+  {B2}_x\cf{ ->[\beta x]} x; \quad \ce{x ->[\gamma_x] \phi}; \quad \ce{x_2 ->[\gamma_{x_2}] \phi}
 \]
 </div>
 <h3>Question 2</h3>
@@ -63,9 +63,9 @@ c_x = \sqrt{\frac{k_{-bx}k_{-x}}{k_{bx}k_{x}}}; \quad U_y = \frac{D_y}{(x/c_x)^2
 \\
 = {B1}_x(k_{-by} + y k_{by})
 \\
-c_y=\frac{k_{-by}}{k_{by}}; \quad {B1}_x = \frac{{B2}_x k_{-by} + U_x y k_{by}}{k_{-by} + y k_{by}} = \frac{D_x (y/c_y)}{(y/c_y)+1}
+c_y=\frac{k_{-by}}{k_{by}}; \quad {B1}_x = \frac{{B2}_x k_{-by} + U_x y k_{by}}{k_{-by} + y k_{by}} = \frac{D_x (y/c_y)}{(\frac{y}{c_y}+1)^2}
 \\
-{B2}_x = \frac{D_x (y/c_y)}{(y/c_y)+1} y \frac{k_{by}}{k_{-by}} = \frac{D_x (y/c_y)}{(y/c_y)+1} \frac{y}{c_y}
+{B2}_x = \frac{D_x (y/c_y)}{(y/c_y)+1} y \frac{k_{by}}{k_{-by}} = \frac{D_x (y/c_y)}{(\frac{y}{c_y}+1)^2} \frac{y}{c_y}
 \]
 
 <p>Therefore I can derive:</p>
@@ -73,7 +73,7 @@ c_y=\frac{k_{-by}}{k_{by}}; \quad {B1}_x = \frac{{B2}_x k_{-by} + U_x y k_{by}}{
 \[
 \dot{y} = \frac{dy}{dt} = U_y \beta_y - \gamma_y y = \frac{D_y \beta_y}{(x/c_x)^2 + 1} - \gamma_y y
 \\
-\dot{x} = \frac{dx}{dt} = \frac{D_x\beta_x (y/c_y)^2}{(y/c_y)+1} - \gamma_x x
+\dot{x} = \frac{dx}{dt} = B2_x \beta_x - \gamma_x x - \gamma_{x_2} x_2 = \frac{D_x\beta_x (y/c_y)^2}{(\frac{y}{c_y}+1)^2} - \gamma_x x - \gamma_{x_2} x_2
 \]
 
 <h3>Question 3</h3>
@@ -91,12 +91,16 @@ T_x = x + \frac{2x^2 k_x}{k_{-x}} + \frac{2D_y (x/c_x)^2}{(x/c_x)^2+1}
 <p>I then calculate the distribution of protein y in the system.</p>
 
 \[
-T_y = y + {B1}_x + 2 {B2}_x = y + \frac{D_x (y/c_y) + 2D_x (y/c_y)^2}{(y/c_y)+1}
+T_y = y + {B1}_x + 2 {B2}_x = y + \frac{D_x (y/c_y) + 2D_x (y/c_y)^2}{(\frac{y}{c_y}+1)^2}
 \]
 
 <h3>Question 5</h3>
-<p>We can now use the prior two calculations in order to represent this system with the pQSSA.</p>
+<p>We can now use the prior two calculations in order to represent this system with the pQSSA. We assume that the proportion of protein bound up in DNA is negligible in comparison to the amount of free protein.</p>
 
 \[
-
+  \frac{dT_x}{dx} = 1 + 4x \frac{k_x}{k_{-x}}; \quad \frac{dT_y}{dx} = 1
+  \\
+  \frac{dT_x}{dt} = \frac{dT_x}{dx} \frac{dx}{dt} = (1 + 4x \frac{k_x}{k_{-x}})(\frac{D_x\beta_x (y/c_y)^2}{(\frac{y}{c_y}+1)^2} - \gamma_x x - \gamma_{x_2} x_2)
+  \\
+  \frac{dT_y}{dt} = \frac{dT_y}{dy} \frac{dy}{dt} = \frac{D_y \beta_y}{(x/c_x)^2 + 1} - \gamma_y y
 \]
