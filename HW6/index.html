@@ -20,12 +20,9 @@
 \]
 
 <b>Question 1:</b>
-<p>Below I demonstrate that P(x) is normalized.</p>
+<p>Below I demonstrate that P(x) is normalized, which means that its values range from [0, 1]</p>
 
 \[
-  E[P(x)] = E[\lambda e^{-\lambda x}] = \lambda E[e^{-\lambda x}]
-  \\
-  = \lambda\int_{-\infty}^{\infty}{x e^{-\lambda x}}
 \]
 
 <b>Question 2:</b>
@@ -34,36 +31,40 @@
 \[
   M_x(\psi) = \int^{\infty}_{0} e^{\psi x} P(x) dx = \lambda \int^{\infty}_{0} e^{\psi x} e^{-\lambda x} dx
   \\
-  <x^1> = \frac{d}{d \psi} M_x(z) \biggr\rvert_{\psi = 0} = \frac{d}{d \psi}\lambda \int^{\infty}_{0}  e^{\psi x} e^{-\lambda x} dx \biggr\rvert_{\psi = 0}
+  <x^1> = \frac{d}{d \psi} M_x(z) \biggr\rvert_{\psi = 0} = \lambda \int^{\infty}_{0} e^{-\lambda x} \frac{d}{d \psi} e^{\psi x} \biggr\rvert_{\psi = 0} dx
   \\
-  = \frac{d}{d \psi}\lambda \int^{\infty}_{0}  e^{x(\psi - \lambda)} dx \biggr\rvert_{\psi = 0} =
-  \frac{d}{d \psi}\lambda \frac{e^{x(\psi - \lambda)}}{(\psi - \lambda)} \biggr\rvert_{x = 0}^{x = \infty} \biggr\rvert_{\psi = 0}
+  = \lambda \int^{\infty}_{0} x e^{\psi x} \biggr\rvert_{\psi = 0}e^{-\lambda x} dx = \lambda \int^{\infty}_{0} xe^{-\lambda x} dx = \frac{\lambda}{\lambda^2}
   \\
-  = \frac{d}{d \psi} \frac{\lambda}{(\lambda-\psi)} \biggr\rvert_{\psi = 0} = \frac{\lambda}{\psi(\lambda - \psi)} \biggr\rvert_{\psi = 0}
-  \\
-  <x^1> = \lambda
-\]
-
-<hr>
-
-
-\[
-  M_x(\psi) = \int^{\infty}_{-\infty} e^{\psi x} P(x) dx = \lambda \int^{\infty}_{-\infty} e^{\psi x} e^{-\lambda x} dx
-  \\
-  <x^1> = \frac{d}{d \psi} M_x(z) \biggr\rvert_{\psi = 0} = \lambda \int^{\infty}_{-\infty} \frac{d}{d \psi} e^{\psi x} \biggr\rvert_{\psi = 0}e^{-\lambda x} dx
-  \\
-  = \lambda \int^{\infty}_{-\infty} \psi e^{\psi x} \biggr\rvert_{\psi = 0}e^{-\lambda x} dx = \lambda \int^{\infty}_{-\infty} 0 = \lambda
-  \\
-  <x^1> = \lambda
+  <x^1> = \frac{1}{\lambda}
 \]
 
 <b>Question 3:</b>
 <p>And then the second moment of P(x).</p>
 
 \[
-  M_x(\psi) = \int^{\infty}_{-\infty} e^{\psi x} P(x) dx = \lambda \int^{\infty}_{-\infty} e^{\psi x} e^{-\lambda x} dx
+  <x^2> = \frac{d^2}{d \psi^2} M_x(z) \biggr\rvert_{\psi = 0}
+  = \lambda \int^{\infty}_{0} e^{-\lambda x} \frac{d^2}{d \psi^2} e^{\psi x} \biggr\rvert_{\psi = 0} dx
   \\
-  <x^2> = \frac{d^2}{d \psi^2} M_x(z) \biggr\rvert_{\psi = 0} =
+  = \lambda \int^{\infty}_{0} e^{-\lambda x} \frac{d}{d \psi} xe^{\psi x} \biggr\rvert_{\psi = 0}  dx
+  = \lambda \int^{\infty}_{0}  x^2 e^{\psi x}\biggr\rvert_{\psi = 0} e^{-\lambda x} dx
   \\
-  <x^2> = \lambda^2
+  = \lambda \int^{\infty}_{0} x^2 e^{-\lambda x} dx = \frac{\lambda}{\lambda^3}
+  \\
+  <x^2> = \frac{1}{\lambda^2}
+\]
+
+<b>Question 4:</b>
+<p>Below I calculate the CV of the distribution.</p>
+
+\[
+  CV = \frac{\sigma}{\mu} = \frac{\sqrt{<x^2>}}{<x^1>} = \frac{\sqrt{\frac{1}{\lambda^2}}}{\frac{1}{\lambda}} = 1
+\]
+
+<b>Question 5:</b>
+<p>Finally I calculate the CDF of the distribution.</p>
+
+\[
+  CDF(v) = \int^{v}_{0} P(x) dx = \int^{v}_{0} \lambda e^{-\lambda x} dx
+  \\
+  = -e^{-\lambda x} \biggr\rvert^{v}_{x=0} = 1 - e^{-\lambda v}
 \]
