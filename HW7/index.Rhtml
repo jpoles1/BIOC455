@@ -40,14 +40,21 @@ CV[n(T)] = \frac{SD[n(T)]}{\lambda T} = \frac{\sqrt{\lambda}}{\lambda T} = \frac
 lambda=.1;
 T=100;
 N=10000;
-t=T/N
-cum_data = cumsum(rpois(1, lambda*t));
+t=T/N;
+cum_data = cumsum(rpois(N, lambda*t));
 plot(cum_data,type="l")
 end.rcode-->
 
 <h4>Question 4:</h4>
-
+<p>We now repeat this simulation many times in order to estimate the mean and CV.</p>
 <!--begin.rcode
-cum_data = cumsum(rpois(N, lambda*t));
-plot(cum_data,type="l")
+rep_data = sapply(seq(0, 1000), function(x){sum(rpois(N, lambda*t))})
+paste0("Mean: ", mean(rep_data))
+paste0("CV: ", sd(rep_data)/mean(rep_data))
+end.rcode-->
+
+<h4>Question 5</h4>
+<!--begin.rcode
+plot(density(rep_data), main = "Simulated vs Actual Distribution (green)")
+lines(dpois(seq(1, 25), lambda*T), col="green")
 end.rcode-->

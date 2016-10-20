@@ -36,6 +36,30 @@ CV[n(T)] = \frac{SD[n(T)]}{\lambda T} = \frac{\sqrt{\lambda}}{\lambda T} = \frac
 <h4>Question 3:</h4>
 <p>We now simulate the above process using the R programming language.</p>
 
-<div class="chunk" id="unnamed-chunk-1"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">plot</span><span class="hl std">(</span><span class="hl kwd">c</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl opt">:</span><span class="hl num">20</span><span class="hl std">),</span> <span class="hl kwd">c</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl opt">:</span><span class="hl num">20</span><span class="hl std">))</span>
+<div class="chunk" id="unnamed-chunk-1"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">lambda</span><span class="hl kwb">=</span><span class="hl num">.1</span><span class="hl std">;</span>
+<span class="hl std">T</span><span class="hl kwb">=</span><span class="hl num">100</span><span class="hl std">;</span>
+<span class="hl std">N</span><span class="hl kwb">=</span><span class="hl num">10000</span><span class="hl std">;</span>
+<span class="hl std">t</span><span class="hl kwb">=</span><span class="hl std">T</span><span class="hl opt">/</span><span class="hl std">N;</span>
+<span class="hl std">cum_data</span> <span class="hl kwb">=</span> <span class="hl kwd">cumsum</span><span class="hl std">(</span><span class="hl kwd">rpois</span><span class="hl std">(N, lambda</span><span class="hl opt">*</span><span class="hl std">t));</span>
+<span class="hl kwd">plot</span><span class="hl std">(cum_data,</span><span class="hl kwc">type</span><span class="hl std">=</span><span class="hl str">&quot;l&quot;</span><span class="hl std">)</span>
 </pre></div>
 </div><div class="rimage default"><img src="figure/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" class="plot" /></div></div>
+
+<h4>Question 4:</h4>
+<p>We now repeat this simulation many times in order to estimate the mean and CV.</p>
+<div class="chunk" id="unnamed-chunk-2"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">rep_data</span> <span class="hl kwb">=</span> <span class="hl kwd">sapply</span><span class="hl std">(</span><span class="hl kwd">seq</span><span class="hl std">(</span><span class="hl num">0</span><span class="hl std">,</span> <span class="hl num">1000</span><span class="hl std">),</span> <span class="hl kwa">function</span><span class="hl std">(</span><span class="hl kwc">x</span><span class="hl std">){</span><span class="hl kwd">sum</span><span class="hl std">(</span><span class="hl kwd">rpois</span><span class="hl std">(N, lambda</span><span class="hl opt">*</span><span class="hl std">t))})</span>
+<span class="hl kwd">paste0</span><span class="hl std">(</span><span class="hl str">&quot;Mean: &quot;</span><span class="hl std">,</span> <span class="hl kwd">mean</span><span class="hl std">(rep_data))</span>
+</pre></div>
+<div class="output"><pre class="knitr r">## [1] &quot;Mean: 10.1508491508492&quot;
+</pre></div>
+<div class="source"><pre class="knitr r"><span class="hl kwd">paste0</span><span class="hl std">(</span><span class="hl str">&quot;CV: &quot;</span><span class="hl std">,</span> <span class="hl kwd">sd</span><span class="hl std">(rep_data)</span><span class="hl opt">/</span><span class="hl kwd">mean</span><span class="hl std">(rep_data))</span>
+</pre></div>
+<div class="output"><pre class="knitr r">## [1] &quot;CV: 0.310345788757198&quot;
+</pre></div>
+</div></div>
+
+<h4>Question 5</h4>
+<div class="chunk" id="unnamed-chunk-3"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">plot</span><span class="hl std">(</span><span class="hl kwd">density</span><span class="hl std">(rep_data),</span> <span class="hl kwc">main</span> <span class="hl std">=</span> <span class="hl str">&quot;Simulated vs Actual Distribution (green)&quot;</span><span class="hl std">)</span>
+<span class="hl kwd">lines</span><span class="hl std">(</span><span class="hl kwd">dpois</span><span class="hl std">(</span><span class="hl kwd">seq</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl std">,</span> <span class="hl num">25</span><span class="hl std">), lambda</span><span class="hl opt">*</span><span class="hl std">T),</span> <span class="hl kwc">col</span><span class="hl std">=</span><span class="hl str">&quot;green&quot;</span><span class="hl std">)</span>
+</pre></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" class="plot" /></div></div>
