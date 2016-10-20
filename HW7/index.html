@@ -13,8 +13,18 @@
 <i>By: Jordan Poles</i>
 <p>Herein, we will be working with a Poisson process with \(\lambda = .1\) events/sec, which runs for T=100 sec.</p>
 
-<b>Question 1:</b>
+<h4>Question 1:</h4>
 <p>First we determine the expected number of events in the given time interval.</p>
 
 \[
+\lt n(T) > = e^{-\lambda T}\sum_{N=0}^{\infty} \frac{(\lambda T )^N}{(N-1)!}
+= e^{-\lambda T}\sum_{N=1}^{\infty} \frac{(\lambda T )^N}{(N-1)!}
+\\
+= e^{-\lambda T} \lambda T \sum_{N=1}^{\infty} \frac{(\lambda T )^{N-1}}{(N-1)!}
+= e^{-\lambda T} \lambda T \sum_{M=0}^{\infty} \frac{(\lambda T )^M}{(M)!} = \lambda T
+\\
+\therefore\quad \lt n(100)> = .1*100 = \bf{10}
 \]
+
+<h4>Question 2:</h4>
+<p></p>
