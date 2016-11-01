@@ -20,7 +20,31 @@
 \[
   \text{It is known that }P_n = (1-\frac{\lambda}{\gamma})(\frac{\lambda}{\gamma})^n
   \\
-  \frac{\lambda}{\gamma} \text{ is a value } [0, 1) \therefore \text{ system has a net negative flux.}
+  {dP}_n^{(+, B)} = [\lambda dt] P_{n-1};\quad {dP}_n^{(-, B)} = [\lambda dt] P_{n};
   \\
-  
+  {dP}_n^{(+, D)} = [\gamma dt] P_{n+1};\quad {dP}_n^{(-, D)} = [\gamma dt] P_{n};
+  \\
+  \frac{{dP}_n}{dt} = \lambda (P_{n-1} - P_{n}) + \gamma (P_{n+1} - P_{n})
+  \\
+  \text{By definition: } \frac{dP_n^s}{dt} = 0 = \lambda (P^s_{n-1} - P^s_{n}) + \gamma (P^s_{n+1} - P^s_{n})
+  \\
+  \frac{{dP}^s_0}{dt} = -\lambda P^s_0 + \gamma P^s_1 = 0 \;\therefore\; P_1^s = -\frac{\lambda}{\gamma}P^s_0
+  \\
+  P_n^s = \frac{-\lambda P^s_{n-2} + [\lambda + \gamma] P^s_{n-1}}{\gamma} \quad \text{where} \quad n>1 \land P_{-1} = 0
+  \\
+  P_2^s = \frac{-\lambda P^s_{0} + [\lambda + \gamma] P^s_{1}}{\gamma} = \frac{-\lambda P^s_{0} + [\frac{\lambda^2}{\gamma} + \lambda] P^s_{0}}{\gamma}
+  \\
+  = \frac{\lambda}{\gamma} [-P^s_{0} + \frac{\lambda}{\gamma}P^s_{0} + P^s_{0}] = (\frac{\lambda}{\gamma})^2 P^s_0
+  \\
+  P_3^s = \frac{-\lambda P^s_{1} + [\lambda + \gamma] P^s_{2}}{\gamma} = (\frac{\lambda}{\gamma})^3 P^s_0
+  \\
+  \text{By induction: } P_n^s = (\frac{\lambda}{\gamma})^n P^s_0
+  \\
+  \sum_{n=0}^\infty P^s_n = 1 = P^s_0 \sum_{n=0}^\infty (\frac{\lambda}{\gamma})^n
+  \\
+  = P^s_0 \frac{1}{1-\frac{\lambda}{\gamma}} \quad \text{given this geometric series.}
+  \\
+  \therefore\quad P^s_0 = 1-\frac{\lambda}{\gamma}
+  \\
+  P_n^s = P^s_0 (\frac{\lambda}{\gamma})^n = (1-\frac{\lambda}{\gamma})(\frac{\lambda}{\gamma})^n
 \]
