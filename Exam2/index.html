@@ -1,0 +1,83 @@
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      extensions: ["mhchem.js"]
+    }
+  });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<h3>Homework 8</h3>
+<i>By: Jordan Poles</i>
+
+<h4>Question 3:</h4>
+<h5><i>Part A:</i></h5>
+
+Given that:
+
+\[
+  P(x) = \mu e^{-\mu x} \;\land\; \mu > 1 \;\land\; x \geq 0
+  \\
+  M_x(\lambda) = <e^{\lambda x}> = \int_{0}^{\infty} e^{\lambda x} P(x) dx
+  \\
+  = \mu \int_{0}^{\infty} e^{\lambda x} e^{-\mu x} dx = \mu \int_{0}^{\infty} e^{-x(\mu - \lambda)} dx
+  \\
+  \text{If we set: } Q = x(\mu - \lambda) \;\land\; dx = (\mu - \lambda)dQ
+  \\
+  M_x(\lambda) = \mu (\mu - \lambda) \int_{0}^{\infty} e^{-Q} dQ = \mu(\mu - \lambda) * 1
+  \\
+\]
+
+<h5><i>Part B:</i></h5>
+
+Given that:
+
+\[
+  <x^n> = \frac{d^n}{d\lambda^n} M_x(\lambda)|_{\lambda = 0} = \int_{0}^{\infty} x^n P(x) dx
+  \\
+  <x^0> = M_x(\lambda)|_{\lambda = 0} = \int_{0}^{\infty} \mu e^{-\mu x} dx
+  \\
+  <x^2> = \frac{d^2}{d\lambda^2} M_x(\lambda)|_{\lambda = 0} = \int_{0}^{\infty} \mu x^2 e^{-\mu x} dx
+  \\
+  <x^4> = \frac{d^4}{d\lambda^4} M_x(\lambda)|_{\lambda = 0} = \int_{0}^{\infty} \mu x^4 e^{-\mu x} dx
+\]
+
+<h4>Question 1: (27 min)</h4>
+<h5><i>Part A: checked</i></h5>
+
+P(x) is a probability density function iff the area under the PDF curve = 1, and the PDF is therefore bounded [0, 1]:
+
+\[
+  \int_{0}^{\infty} P(x)dx = \int_{0}^{c} P(x) dx + \int_{c}^{\infty} P(x) dx = 1
+  \\
+   = \int_{0}^{c} \alpha(1-\frac{x}{c}) dx + \int_{c}^{\infty} 0 = \int_{0}^{c} \alpha(1-\frac{x}{c})dx
+   \\
+   = \alpha x |_0^c - \int_{0}^{c} x\frac{\alpha}{c} = ac - x^2\frac{\alpha}{2c}|_0^c = \alpha c - \frac{\alpha c}{2} = \frac{\alpha c}{2} = 1
+   \\
+   \therefore \quad \alpha = \frac{2}{c}
+\]
+
+<h5><i>Part B:</i></h5>
+
+Below we use the properties of moment generating functions to find the first and second moments of the above distribution:
+
+\[
+  \lt x> \;= \int_{0}^{\infty} xP(x)dx = \int_{0}^{c} \frac{2}{c} x-\frac{2 x^2}{c^2} dx
+  \\
+  = \frac{x^2}{c}  |_0^c - \frac{2}{3c^2}x^3 |_0^c = c -  \frac{2}{3} c = \frac{c}{3}
+  \\
+  \lt x> \;= \frac{c}{3}
+  \\
+  \lt x^2 > \;= \int_{0}^{\infty} x^2P(x)dx = \int_{0}^{c} \frac{2}{c} x^2-\frac{2 x^3}{c^2} dx
+  \\
+  = \frac{2x^3}{3c}  |_0^c - \frac{x^4}{2c^2} |_0^c = \frac{2}{3}c^2 - \frac{c^2}{2}
+  \\
+  = \frac{4}{6}c^2 - \frac{3c^2}{6} = \frac{c^2}{6}
+  \\
+  \lt x^2> \;= \frac{c^2}{6}
+\]
+
+<h4>Question 2:</h4>
+<h5><i>Part A:</i></h5>
