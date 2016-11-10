@@ -9,43 +9,18 @@
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-<h3>Homework 8</h3>
+<h3>Exam 2</h3>
 <i>By: Jordan Poles</i>
 
-<h4>Question 3:</h4>
+
+<h4>Question 2:</h4>
 <h5><i>Part A:</i></h5>
 
-Given that:
-
 \[
-  P(x) = \mu e^{-\mu x} \;\land\; \mu > 1 \;\land\; x \geq 0
-  \\
-  M_x(\lambda) = <e^{\lambda x}> = \int_{0}^{\infty} e^{\lambda x} P(x) dx
-  \\
-  = \mu \int_{0}^{\infty} e^{\lambda x} e^{-\mu x} dx = \mu \int_{0}^{\infty} e^{-x(\mu - \lambda)} dx
-  \\
-  \text{If we set: } Q = x(\mu - \lambda) \;\land\; dx = (\mu - \lambda)dQ
-  \\
-  M_x(\lambda) = \mu (\mu - \lambda) \int_{0}^{\infty} e^{-Q} dQ = \mu(\mu - \lambda) * 1
-  \\
+  P(A \lor B | x) = P(A) + P(B) - P(A \land B)
 \]
-
-<h5><i>Part B:</i></h5>
-
-Given that:
-
-\[
-  <x^n> = \frac{d^n}{d\lambda^n} M_x(\lambda)|_{\lambda = 0} = \int_{0}^{\infty} x^n P(x) dx
-  \\
-  <x^0> = M_x(\lambda)|_{\lambda = 0} = \int_{0}^{\infty} \mu e^{-\mu x} dx
-  \\
-  <x^2> = \frac{d^2}{d\lambda^2} M_x(\lambda)|_{\lambda = 0} = \int_{0}^{\infty} \mu x^2 e^{-\mu x} dx
-  \\
-  <x^4> = \frac{d^4}{d\lambda^4} M_x(\lambda)|_{\lambda = 0} = \int_{0}^{\infty} \mu x^4 e^{-\mu x} dx
-\]
-
-<h4>Question 1: (27 min)</h4>
-<h5><i>Part A: checked</i></h5>
+<h4>Question 1:</h4>
+<h5><i>Part A:</i></h5>
 
 P(x) is a probability density function iff the area under the PDF curve = 1, and the PDF is therefore bounded [0, 1]:
 
@@ -79,5 +54,98 @@ Below we use the properties of moment generating functions to find the first and
   \lt x^2> \;= \frac{c^2}{6}
 \]
 
-<h4>Question 2:</h4>
+<h4>Question 3:</h4>
 <h5><i>Part A:</i></h5>
+
+Given that:
+
+\[
+  P(x) = \mu e^{-\mu x} \;\land\; \mu > 1 \;\land\; x \geq 0
+  \\
+  M_x(\lambda) = <e^{\lambda x}> = \int_{0}^{\infty} e^{\lambda x} P(x) dx
+  \\
+  = \mu \int_{0}^{\infty} e^{\lambda x} e^{-\mu x} dx = \mu \int_{0}^{\infty} e^{-x(\mu - \lambda)} dx
+  \\
+  \text{If we set: } Q = x(\mu - \lambda) \;\land\; dx = \frac{dQ}{\mu - \lambda}
+  \\
+  M_x(\lambda) = \frac{\mu}{\mu - \lambda} \int_{0}^{\infty} e^{-Q} dQ = \frac{\mu}{\mu - \lambda} = (1 - \frac{\lambda}{\mu})^{-1}
+  \\
+\]
+
+<h5><i>Part B:</i></h5>
+
+Using the above moment generating function:
+
+\[
+  <x^n> = \frac{d^n}{d\lambda^n} M_x(\lambda) |_{\lambda = 0}
+  \\
+  <x^0> = M_x(\lambda)|_{\lambda = 0} = \frac{\mu}{\mu} = 1
+  \\
+  \frac{d}{d\lambda} (1 - \frac{\lambda}{\mu})^{-1} = \frac{1}{\mu}(\frac{\lambda}{\mu}-1)^{-2}
+  \\
+  <x^2> = \frac{d^2}{d\lambda^2} (1 - \frac{\lambda}{\mu})^{-1} |_{\lambda = 0} = -\frac{2}{\mu^2}(\frac{\lambda}{\mu}-1)^{-3} |_{\lambda = 0}   = \frac{2}{\mu^2}
+  \\
+  \frac{d^3}{d\lambda^3} (1 - \frac{\lambda}{\mu})^{-1} = \frac{6}{\mu^3}(\frac{\lambda}{\mu}-1)^{-4}
+  \\
+  <x^4> = \frac{d^4}{d\lambda^4} M_x(\lambda)|_{\lambda = 0} = -\frac{24}{\mu^4}(\frac{\lambda}{\mu}-1)^{-5}|_{\lambda = 0}  = \frac{24}{\mu^4}
+\]
+
+<h4>Question 4:</h4>
+
+We will prove the following:
+
+\[
+  \frac{d<n>}{dt} = \lambda - \gamma <n>
+\]
+
+Given that:
+
+\[
+  \text{By definition: } \frac{dP_n^S}{dt} = \lambda(P_{n-1}^S - P_{n}^S) + \gamma[(n+1)P_{n+1}^S - nP_n^S] = 0
+  \\
+  \text{We reduce our index by one to find a general solution:}
+  \\
+  \lambda P_{n-1}^S - \lambda P_{n-2}^S = \gamma n P_n^S - \gamma(n-1)P_{n-1}^S
+  \\
+  \therefore\quad P_n^S = \frac{P_{n-1}^S[\lambda + \gamma(n-1)]- \lambda P_{n-2}^S }{\gamma n}
+  \\
+  \therefore\quad \frac{dP_0^S}{dt} = -\lambda P_0^S + \gamma P_1^S = 0
+  \\
+  \therefore\quad P_1^S = \frac{\lambda}{\gamma} P_0^S
+  \\
+  P_2^S = \frac{-\lambda P_0^S + (\lambda + \gamma)P_1^S}{2 \gamma} = \frac{-\lambda P_0^S + (\lambda + \gamma)\frac{\lambda}{\gamma} P_0^S}{2 \gamma}
+  \\
+  = \frac{1}{2} (\frac{\lambda}{\gamma})^2 P_0^S
+  \\
+  P_3^S = \frac{-\lambda P_1^S + (\lambda + 2\gamma)P_2^S}{3 \gamma} = \frac{1}{6} (\frac{\lambda}{\gamma})^3 P_0^S
+  \\
+  \text{By induction: } P_n^S = \frac{1}{n!}(\frac{\lambda}{\gamma})^n P_0^S
+  \\
+  \text{Given that:} \sum_{n=0}^\infty P_n^s = 1 = P_0^S \sum_{n=0}^\infty \frac{1}{n!}(\frac{\lambda}{\gamma})^n = P_0^S e^{\lambda/\gamma}
+  \\
+  \therefore\quad P_0^S = e^{-\lambda/\gamma} \;\land\; P_n^S = \frac{1}{n!}(\frac{\lambda}{\gamma})^n e^{-\lambda/\gamma}
+\]
+
+With the above calculations, we can now reason about the expected/average value of this distribution:
+
+\[
+  <n> = \sum_{n=0}^{\infty} n P_n = \sum_{n=0}^{\infty} n \frac{1}{n!}(\frac{\lambda}{\gamma})^n e^{-\lambda/\gamma}
+  \\
+  = \sum_{n=0}^{\infty} \frac{1}{(n-1)!}(\frac{\lambda}{\gamma})^n e^{-\lambda/\gamma} = \frac{\lambda}{\gamma}\sum_{n=0}^{\infty} \frac{1}{(n-1)!}(\frac{\lambda}{\gamma})^{n-1} e^{-\lambda/\gamma}
+  \\
+  \text{Below we re-index to help solve:}
+  \\
+  = \frac{\lambda}{\gamma}\sum_{m=0}^{\infty} \frac{1}{m!}(\frac{\lambda}{\gamma})^m e^{-\lambda/\gamma} = \frac{\lambda}{\gamma}e^{\lambda/\gamma}e^{-\lambda/\gamma}
+  \\
+  = \frac{\lambda}{\gamma} = <n>
+\]
+
+Finally we prove our initial statement:
+
+\[
+  \frac{d<n>}{dt} = \frac{d\frac{\lambda}{\gamma}}{dt} = 0
+  \\
+  \text{Furthermore: } \frac{d<n>}{dt} = \lambda - \gamma <n>
+  \\
+  = \lambda - \gamma \frac{\lambda}{\gamma} = \lambda - \lambda = 0
+\]
