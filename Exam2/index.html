@@ -12,13 +12,6 @@
 <h3>Exam 2</h3>
 <i>By: Jordan Poles</i>
 
-
-<h4>Question 2:</h4>
-<h5><i>Part A:</i></h5>
-
-\[
-  P(A \lor B | x) = P(A) + P(B) - P(A \land B)
-\]
 <h4>Question 1:</h4>
 <h5><i>Part A:</i></h5>
 
@@ -54,15 +47,52 @@ Below we use the properties of moment generating functions to find the first and
   \lt x^2> \;= \frac{c^2}{6}
 \]
 
-<h4>Question 3:</h4>
+<h4>Question 2:</h4>
 <h5><i>Part A:</i></h5>
 
-Given that:
+\[
+  \text{For a general Gillespie process we define P(T) as an exponential dist: }
+  \\
+  P(T) = \text{PDF that next event occurs between t+T and t+T+dt}
+  \\
+  \text{Let the rate of a general process i be: } \lambda_i
+  \\
+  P(T) = \Lambda(\vec{n}, t) exp[\Lambda(\vec{n}, t)T] \text{ where } \Lambda(\vec{n}, t) = \sum \lambda_i(\vec{n}, t)
+  \\
+  \text{Let the production rate be: } \lambda_1 = \frac{1}{90} \frac{min}{production}
+  \\
+  \text{Let the death rate be: } \lambda_2 = \frac{1}{x(1/2)^{1/20}} \frac{min}{degradation}
+  \\
+  \therefore\quad \Lambda(\vec{n}, t) = \frac{1}{90} + \frac{1}{x(1/2)^{1/20}}
+  \\
+  P(T) = [\frac{1}{90} + \frac{1}{x(1/2)^{1/20}}] exp[(\frac{1}{90} + \frac{1}{x(1/2)^{1/20}})T]
+\]
+
+<h5><i>Part B:</i></h5>
+
+\[
+  \lt P(T)> = \int_{T=0}^\infty T [\frac{1}{90} + \frac{1}{x(1/2)^{1/20}}] exp[(\frac{1}{90} + \frac{1}{x(1/2)^{1/20}})T]
+\]
+
+<h5><i>Part C:</i></h5>
+
+\[
+  \text{This problem can be modeled using simple probabilities:}
+  \\
+  \text{For a given event:} P(\lambda_i) = \frac{\lambda_i}{\sum_z \lambda_z}
+  \\
+  \text{Probability of a death event:}
+  \\
+  P(\lambda_2) = \frac{\lambda_2}{\sum_z \lambda_z} = \frac{90 + x(1/2)^{1/20}}{x(1/2)^{1/20}}
+\]
+
+<h4>Question 3:</h4>
+<h5><i>Part A:</i></h5>
 
 \[
   P(x) = \mu e^{-\mu x} \;\land\; \mu > 1 \;\land\; x \geq 0
   \\
-  M_x(\lambda) = <e^{\lambda x}> = \int_{0}^{\infty} e^{\lambda x} P(x) dx
+  M_x(\lambda) = \lt e^{\lambda x}> = \int_{0}^{\infty} e^{\lambda x} P(x) dx
   \\
   = \mu \int_{0}^{\infty} e^{\lambda x} e^{-\mu x} dx = \mu \int_{0}^{\infty} e^{-x(\mu - \lambda)} dx
   \\
@@ -77,17 +107,17 @@ Given that:
 Using the above moment generating function:
 
 \[
-  <x^n> = \frac{d^n}{d\lambda^n} M_x(\lambda) |_{\lambda = 0}
+  \lt x^n> = \frac{d^n}{d\lambda^n} M_x(\lambda) |_{\lambda = 0}
   \\
-  <x^0> = M_x(\lambda)|_{\lambda = 0} = \frac{\mu}{\mu} = 1
+  \lt x^0> = M_x(\lambda)|_{\lambda = 0} = \frac{\mu}{\mu} = 1
   \\
   \frac{d}{d\lambda} (1 - \frac{\lambda}{\mu})^{-1} = \frac{1}{\mu}(\frac{\lambda}{\mu}-1)^{-2}
   \\
-  <x^2> = \frac{d^2}{d\lambda^2} (1 - \frac{\lambda}{\mu})^{-1} |_{\lambda = 0} = -\frac{2}{\mu^2}(\frac{\lambda}{\mu}-1)^{-3} |_{\lambda = 0}   = \frac{2}{\mu^2}
+  \lt x^2> = \frac{d^2}{d\lambda^2} (1 - \frac{\lambda}{\mu})^{-1} |_{\lambda = 0} = -\frac{2}{\mu^2}(\frac{\lambda}{\mu}-1)^{-3} |_{\lambda = 0}   = \frac{2}{\mu^2}
   \\
   \frac{d^3}{d\lambda^3} (1 - \frac{\lambda}{\mu})^{-1} = \frac{6}{\mu^3}(\frac{\lambda}{\mu}-1)^{-4}
   \\
-  <x^4> = \frac{d^4}{d\lambda^4} M_x(\lambda)|_{\lambda = 0} = -\frac{24}{\mu^4}(\frac{\lambda}{\mu}-1)^{-5}|_{\lambda = 0}  = \frac{24}{\mu^4}
+  \lt x^4> = \frac{d^4}{d\lambda^4} M_x(\lambda)|_{\lambda = 0} = -\frac{24}{\mu^4}(\frac{\lambda}{\mu}-1)^{-5}|_{\lambda = 0}  = \frac{24}{\mu^4}
 \]
 
 <h4>Question 4:</h4>
@@ -95,10 +125,8 @@ Using the above moment generating function:
 We will prove the following:
 
 \[
-  \frac{d<n>}{dt} = \lambda - \gamma <n>
+  \frac{d\lt n >\;}{dt} = \lambda - \gamma \lt n >\;
 \]
-
-Given that:
 
 \[
   \text{By definition: } \frac{dP_n^S}{dt} = \lambda(P_{n-1}^S - P_{n}^S) + \gamma[(n+1)P_{n+1}^S - nP_n^S] = 0
@@ -129,7 +157,7 @@ Given that:
 With the above calculations, we can now reason about the expected/average value of this distribution:
 
 \[
-  <n> = \sum_{n=0}^{\infty} n P_n = \sum_{n=0}^{\infty} n \frac{1}{n!}(\frac{\lambda}{\gamma})^n e^{-\lambda/\gamma}
+  \lt n> = \sum_{n=0}^{\infty} n P_n = \sum_{n=0}^{\infty} n \frac{1}{n!}(\frac{\lambda}{\gamma})^n e^{-\lambda/\gamma}
   \\
   = \sum_{n=0}^{\infty} \frac{1}{(n-1)!}(\frac{\lambda}{\gamma})^n e^{-\lambda/\gamma} = \frac{\lambda}{\gamma}\sum_{n=0}^{\infty} \frac{1}{(n-1)!}(\frac{\lambda}{\gamma})^{n-1} e^{-\lambda/\gamma}
   \\
@@ -137,15 +165,15 @@ With the above calculations, we can now reason about the expected/average value 
   \\
   = \frac{\lambda}{\gamma}\sum_{m=0}^{\infty} \frac{1}{m!}(\frac{\lambda}{\gamma})^m e^{-\lambda/\gamma} = \frac{\lambda}{\gamma}e^{\lambda/\gamma}e^{-\lambda/\gamma}
   \\
-  = \frac{\lambda}{\gamma} = <n>
+  = \frac{\lambda}{\gamma} = \lt n>
 \]
 
 Finally we prove our initial statement:
 
 \[
-  \frac{d<n>}{dt} = \frac{d\frac{\lambda}{\gamma}}{dt} = 0
+  \frac{d\lt n >\;}{dt} = \frac{d\frac{\lambda}{\gamma}}{dt} = 0
   \\
-  \text{Furthermore: } \frac{d<n>}{dt} = \lambda - \gamma <n>
+  \text{Furthermore: } \frac{d\lt n >\;}{dt} = \lambda - \gamma \lt n >\;
   \\
   = \lambda - \gamma \frac{\lambda}{\gamma} = \lambda - \lambda = 0
 \]
