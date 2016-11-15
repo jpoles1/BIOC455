@@ -33,15 +33,25 @@ I then describe the dynamics of small perturbations about this point:
 \[
   x_\epsilon = x_s + \epsilon
   \\
-  \dot{x}_\epsilon = \frac{d}{dt} (x_s + \epsilon) = \dot{\epsilon} = \beta - \gamma (x_s + \epsilon)
+  \dot{x}_\epsilon = \frac{d}{dt} (x_s + \epsilon) = \dot{\epsilon} = \beta - \gamma (x_s + \epsilon) + \tilde{\eta}(t)
   \\
-  \dot{\epsilon} = \beta - \gamma x_s + \gamma \epsilon = \gamma \epsilon
+  \dot{\epsilon} = \beta - \gamma x_s + \gamma \epsilon + \tilde{\eta}(t) = \gamma \epsilon + \tilde{\eta}(t)
   \\
-  \epsilon = \int \dot{e} = \frac{\gamma}{2} \epsilon^2 + C
-  \\
-  \lt \epsilon > = \sum \epsilon
 \]
 
+<h3><i>Part 2</i></h3>
+
+\[
+\epsilon = \int \dot{e} = \epsilon_0 + \frac{\gamma}{2} \epsilon^2 + \tilde{\eta}(t)
+\\
+mean(\epsilon) = \lt \epsilon > = \lt \epsilon_0 > + \lt \frac{\gamma}{2} \epsilon^2 >  + \lt \tilde{\eta}(t) >
+\\
+= \epsilon_0 + \frac{\gamma}{2} \epsilon^2
+\\
+\lt \epsilon^2 > =
+\\
+SD(\epsilon) = \lt \epsilon^2 > - \lt \epsilon >
+\]
 <h3><i>Part 3</i></h3>
 <p>
 I begin by deriving the fixed point of the ODE representation of this system:
@@ -57,21 +67,12 @@ I begin by deriving the fixed point of the ODE representation of this system:
   \\
   \text{We only consider the case where:}
   \\
+  x_s = \frac{-c + \sqrt{c^2 + \frac{4 \alpha c}{\gamma}}}{2}
 
 \]
 
 <p>
-I then describe the dynamics of small perturbations about this point:
+I will then describe the first-order dynamics of perturbations about the above fixed point using a SDE:
 </p>
 
 \[
-  x_\epsilon = x_s + \epsilon
-  \\
-  \dot{x}_\epsilon = \frac{d}{dt} (x_s + \epsilon) = \dot{\epsilon} = \beta - \gamma (x_s + \epsilon)
-  \\
-  \dot{\epsilon} = \beta - \gamma x_s + \gamma \epsilon = \gamma \epsilon
-  \\
-  \epsilon = \int \dot{e} = \frac{\gamma}{2} \epsilon^2 + C
-  \\
-  \lt \epsilon > = \sum \epsilon
-\]
