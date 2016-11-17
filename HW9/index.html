@@ -35,22 +35,30 @@ I then describe the dynamics of small perturbations about this point:
   \\
   \dot{x}_\epsilon = \frac{d}{dt} (x_s + \epsilon) = \dot{\epsilon} = \beta - \gamma (x_s + \epsilon) + \tilde{\eta}(t)
   \\
-  \dot{\epsilon} = \beta - \gamma x_s + \gamma \epsilon + \tilde{\eta}(t) = \gamma \epsilon + \tilde{\eta}(t)
+  \dot{\epsilon} = \beta - \gamma x_s - \gamma \epsilon + \tilde{\eta}(t) = - \gamma \epsilon + \tilde{\eta}(t)
   \\
 \]
 
 <h3><i>Part 2</i></h3>
 
 \[
-\epsilon = \int \dot{e} = \epsilon_0 + \frac{\gamma}{2} \epsilon^2 + \tilde{\eta}(t)
+\epsilon = x_0 e^{-\gamma (t-t_0)} + e^{-\gamma t} \int_{t_0}^{t} \tilde{\eta}(t) e^{\gamma s}  ds
 \\
-mean(\epsilon) = \lt \epsilon > = \lt \epsilon_0 > + \lt \frac{\gamma}{2} \epsilon^2 >  + \lt \tilde{\eta}(t) >
+\text{We assume }t_0 \text{was a long time ago for stability} (-\infty)
 \\
-= \epsilon_0 + \frac{\gamma}{2} \epsilon^2
+= 0 + e^{-\gamma t} \int_{-\infty}^{t} \tilde{\eta}(t) e^{\gamma s}  ds
 \\
-\lt \epsilon^2 > =
+mean(\epsilon) = \lt \epsilon > = \lt e^{-\gamma t} \int_{-\infty}^{t} \tilde{\eta}(t) e^{\gamma s}  ds >
 \\
-SD(\epsilon) = \lt \epsilon^2 > - \lt \epsilon >
+= e^{-\gamma t} \int_{-\infty}^{t} \lt \tilde{\eta}(s)> e^{\gamma s}  ds = 0
+\\
+\lt \epsilon^2 > = e^{-2\gamma t}\int_{-\infty}^{t} ds_1 \int_{-\infty}^{t} ds_2 \lt \tilde{\eta}(s_1)\tilde{\eta}(s_2)> e^{\gamma s_1}e^{\gamma s_2}
+\\
+= 2D e^{-2\gamma t}\int_{-\infty}^{t} ds_1 e^{2\gamma s_1} \;\text{ given } \int \delta(t-t)  = 1
+\\
+\lt \epsilon^2 > = \frac{2D}{2\gamma} e^{-2\gamma t}e^{2\gamma t} = D/\gamma
+\\
+SD(\epsilon) = \lt \epsilon^2 > - \lt \epsilon >^2 = D/\gamma - 0^2 = D/\gamma
 \]
 <h3><i>Part 3</i></h3>
 <p>
@@ -72,7 +80,26 @@ I begin by deriving the fixed point of the ODE representation of this system:
 \]
 
 <p>
-I will then describe the first-order dynamics of perturbations about the above fixed point using a SDE:
+I will then describe the first-order dynamics of perturbations about the above fixed point using a SDE. Unlike the last system, this one is non-linear. As such, a taylor approximation of the perturbation will yield a sufficiently accurate estimate:
 </p>
 
 \[
+  A = A_0 + \epsilon A_1 + \epsilon^2 A_2 + ...
+  \\
+  A \approx  A_0 + \epsilon A_1 \;\text{ given } O(\epsilon^1)
+  \\
+  \therefore\; \dot{x}_\epsilon = \dot{\epsilon} \approx A_0 + A_1 \epsilon
+  \\
+  = [\frac{\alpha}{1 + \frac{x_s}{c}} - \gamma x_s] + \frac{d}{d\epsilon}[\frac{\alpha}{1 + \frac{x_s + \epsilon}{c}} - \gamma (x_s + \epsilon)] |_{\epsilon=0}\epsilon
+  \\
+  = 0 + [\frac{-a/c}{(1+x_s/c)^2} - \gamma]\epsilon
+\]
+
+<h3><i>Part 4</i></h3>
+
+\[
+
+\lt \epsilon> =  \tilde{\eta}(t)
+\\
+\lt \epsilon^2>=\frac{D}{\frac{a/c}{(1+x_s/c)^2} + \gamma}
+\]
