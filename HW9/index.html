@@ -11,9 +11,6 @@
 
 <h3>Homework 9</h3>
 <i>By: Jordan Poles</i>
-<p>
-http://www.cims.nyu.edu/~eve2/reg_pert.pdf
-</p>
 
 <h3><i>Part 1</i></h3>
 <p>
@@ -35,7 +32,7 @@ I then describe the dynamics of small perturbations about this point:
   \\
   \dot{x}_\epsilon = \frac{d}{dt} (x_s + \epsilon) = \dot{\epsilon} = \beta - \gamma (x_s + \epsilon) + \tilde{\eta}(t)
   \\
-  \dot{\epsilon} = \beta - \gamma x_s - \gamma \epsilon + \tilde{\eta}(t) = - \gamma \epsilon + \tilde{\eta}(t)
+  \text{SDE: } \dot{\epsilon} = \beta - \gamma x_s - \gamma \epsilon + \tilde{\eta}(t) = - \gamma \epsilon + \tilde{\eta}(t)
   \\
 \]
 
@@ -93,13 +90,38 @@ I will then describe the first-order dynamics of perturbations about the above f
   = [\frac{\alpha}{1 + \frac{x_s}{c}} - \gamma x_s] + \frac{d}{d\epsilon}[\frac{\alpha}{1 + \frac{x_s + \epsilon}{c}} - \gamma (x_s + \epsilon)] |_{\epsilon=0}\epsilon
   \\
   = 0 + [\frac{-a/c}{(1+x_s/c)^2} - \gamma]\epsilon
+  \\
+  \text{SDE: } \dot{\epsilon} = [\frac{-a/c}{(1+x_s/c)^2} - \gamma]\epsilon + \tilde{\eta}(t)
 \]
 
 <h3><i>Part 4</i></h3>
 
-\[
+<p>
+The path taken to the solution in this part closely parallels that used in Part 2.
+</p>
 
-\lt \epsilon> =  \tilde{\eta}(t)
+\[
+\text{Let } \rho = \frac{a/c}{(1+x_s/c)^2} + \gamma
 \\
-\lt \epsilon^2>=\frac{D}{\frac{a/c}{(1+x_s/c)^2} + \gamma}
+\text{SDE: } \dot{\epsilon} = -\rho \epsilon + \tilde{\eta}(t)
+\\
+\epsilon = x_0 e^{-\rho (t-t_0)} + e^{-\rho t} \int_{t_0}^{t} \tilde{\eta}(t) e^{\rho s}  ds
+\\
+\text{We assume }t_0 \text{was a long time ago for stability} (-\infty)
+\\
+= 0 + e^{-\rho t} \int_{-\infty}^{t} \tilde{\eta}(t) e^{\rho s}  ds
+\\
+\lt \epsilon> =  \lt e^{-\rho t} \int_{-\infty}^{t} \tilde{\eta}(t) e^{\rho s}  ds >\
+\\
+= e^{-\rho t} \int_{-\infty}^{t} \lt \tilde{\eta}(t) > e^{\rho s}  ds = 0
+\\
+\lt \epsilon^2 > = e^{-2\rho t}\int_{-\infty}^{t} ds_1 \int_{-\infty}^{t} ds_2 \lt \tilde{\eta}(s_1)\tilde{\eta}(s_2)> e^{\rho s_1}e^{\rho s_2}
+\\
+= 2D e^{-2\rho t}\int_{-\infty}^{t} ds_1 e^{2\rho s_1} \;\text{ given } \int \delta(t-t)  = 1
+\\
+\lt \epsilon^2 > = \frac{2D}{2\rho} e^{-2\rho t}e^{2\rho t} = D/\rho = \frac{D}{\frac{a/c}{(1+x_s/c)^2} + \gamma}
+\\
+SD(\epsilon) = \lt \epsilon^2 > - \lt \epsilon >^2 = D/\rho - 0^2 = D/\rho
+\\
+= \frac{D}{\frac{a/c}{(1+x_s/c)^2} + \gamma}
 \]
