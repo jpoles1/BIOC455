@@ -21,7 +21,11 @@
         $.get(doc+"/"+doc+".html", function(data){
           $("#content").html(data)
         }).fail(function(){
-          $("body").html("<h1>Invalid document URL</h1>")
+          $.get(doc+"/index.html", function(data){
+            $("#content").html(data)
+          }).fail(function(){
+            $("body").html("<h1>Invalid document URL</h1>")
+          })
         })
         document.title = doc + " - MathJax Github Viewer"
         var currentTime = new Date()
