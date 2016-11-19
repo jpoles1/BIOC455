@@ -1,0 +1,44 @@
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      extensions: ["mhchem.js"]
+    }
+  });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<h3>Homework 10</h3>
+<i>By: Jordan Poles</i>
+
+<h3><i>Part 1</i></h3>
+<p>
+I begin by deriving the PDF for this system from the given parameters:
+</p>
+
+\[
+  P(t_{tot}=t) = P(t) = \text{Prob. it takes a time "t" to complete the linear chain of 2 events.}
+  \\
+  \text{Rates are: } \lambda_1 + \lambda_2
+  \\
+  \text{We split our "timeline" into two regions, s is the time for event 1}
+  \\
+  \text{while t-s is the time for event 2}
+  \\
+  P(t) = P(t_1=s) \land P(t_2 = t-s) \text{ for all values of s < t; is mutually exclusive}
+  \\
+  \therefore\; P(t) = \int_{0}^{t} P(t_1=s)P(t_2=t-s) ds
+  \\
+  = \int_{0}^{t} [\lambda_1 e^{-\lambda_1 s}] [\lambda_2 e^{-\lambda_2 (t-s)}]ds
+\]
+
+
+<h3><i>Part 2</i></h3>
+<p>
+I then derive the mean of the distribution:
+</p>
+
+\[
+  <P(t)> = \int_{0}^{\infty} t P(t) dt = 
+\]
