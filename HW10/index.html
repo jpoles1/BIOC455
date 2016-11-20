@@ -31,6 +31,15 @@ I begin by deriving the PDF for this system from the given parameters:
   \therefore\; P(t) = \int_{0}^{t} P(t_1=s)P(t_2=t-s) ds
   \\
   = \int_{0}^{t} [\lambda_1 e^{-\lambda_1 s}] [\lambda_2 e^{-\lambda_2 (t-s)}]ds
+  = \lambda_1 \lambda_2 \int_{0}^{t} exp[-\lambda_1(s) - \lambda_2 (t-s)] ds
+  \\
+  = \lambda_1 \lambda_2 \int_{0}^{t} exp[s(\lambda_2-\lambda_1)]exp[-\lambda_2 t] ds
+  = \lambda_1 \lambda_2 e^{-\lambda_2 t} \int_{0}^{t} e^{s(\lambda_2-\lambda_1)} ds
+  \\
+  = \frac{\lambda_1 \lambda_2 e^{-\lambda_2 t}}{(\lambda_2-\lambda_1)} [e^{s(\lambda_2-\lambda_1)}]_{s=0}^{s=t}
+  = \frac{\lambda_1 \lambda_2 e^{-\lambda_2 t}}{(\lambda_2-\lambda_1)} [e^{t(\lambda_2-\lambda_1)}-1]
+  \\
+  P(t) = \frac{\lambda_1 \lambda_2}{(\lambda_2-\lambda_1)} [e^{-\lambda_1t}-e^{-\lambda_2 t}]
 \]
 
 
@@ -40,5 +49,32 @@ I then derive the mean of the distribution:
 </p>
 
 \[
-  <P(t)> = \int_{0}^{\infty} t P(t) dt = 
+  <P(t)> = \int_{0}^{\infty} t P(t) dt
+  = \frac{\lambda_1 \lambda_2}{(\lambda_2-\lambda_1)} \int_{0}^{\infty} t[e^{-\lambda_1t}-e^{-\lambda_2 t}] dt
+  \\
+  = \frac{\lambda_1 \lambda_2}{(\lambda_2-\lambda_1)} [\frac{1}{\lambda_1^2} - \frac{1}{\lambda_2^2}]
+  = \frac{1}{(\lambda_2-\lambda_1)} [\frac{\lambda_2}{\lambda_1} - \frac{\lambda_1}{\lambda_2}]
+\]
+
+<h3><i>Part 3</i></h3>
+<p>
+I then find the limit of P(t) as the lambdas assume the same value:
+</p>
+
+\[
+  \text{let } Z(t) = lim_{\lambda_2 \to \lambda_1} P(t)
+  \\
+  Z(t) = \frac{\lambda_1 \lambda_2}{(\lambda_2-\lambda_1)} [e^{-\lambda_1t}-e^{-\lambda_2 t}] = \frac{0}{0}
+  \\
+  \text{By l'hospital's rule: } Z(t) = lim_{\lambda_2 \to \lambda_1} \frac{A}{B}
+  \\
+  \text{let } A = \frac{d}{d \lambda_2}  [\lambda_1 \lambda_2][e^{-\lambda_1t}-e^{-\lambda_2 t}]
+  = \lambda_1 e^{-\lambda_1t} - \frac{d}{d \lambda_2} \lambda_1 \lambda_2 e^{-\lambda_2 t}
+  \\
+  = \lambda_1 e^{-\lambda_1t} - \lambda_1[- \lambda_2 t e^{-\lambda_2 t} + e^{-\lambda_2 t}]
+  = \lambda_1[e^{-\lambda_1t} + \lambda_2 t e^{-\lambda_2 t} - e^{-\lambda_2 t}]
+  \\
+  \text{let } B = \frac{d}{d \lambda_2} [\lambda_2-\lambda_1] = 1
+  \\
+  \therefore\; Z(t) = lim_{\lambda_2 \to \lambda_1} A = \lambda_1^2 t e^{-\lambda_1 t}
 \]
