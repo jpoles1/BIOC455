@@ -1,0 +1,118 @@
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      extensions: ["mhchem.js"]
+    }
+  });
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<h3>LTM Switch Derivations</h3>
+<i>By: Jordan Poles</i>
+
+<h3><i>Molecular Reaction Network</i></h3>
+
+$$
+\ce{2cro <=>[k_{dcro}][k_{-dcro}] cro_2}
+;\;
+\ce{{U}_{cI} + cro_2 <=>[k_{BcI}][k_{-BcI}] B_{cI}}
+\\[.2in]
+\ce{2cI <=>[k_{dcI}][k_{-dcI}] cI_2}
+;\;
+\ce{{U}_{cro} + cI_2 <=>[k_{Bcro}][k_{-Bcro}] B_{cro}}
+;\;
+\ce{{B}_{cro} + cI_2 <=>[k_{BBcro}][k_{-BBcro}] BB_{cro}}
+\\[.6in]
+\ce{U_{cI} ->[\alpha_{UcI}] cI}
+;\;
+\ce{B_{cI} ->[\alpha_{BcI}] cI}
+\\[.2in]
+\text{where: } \alpha_{UcI} >> \alpha_{BcI}
+\\[.2in]
+\ce{U_{cro} ->[\alpha_{Ucro}] cro}
+;\;
+\ce{B_{cro} ->[\alpha_{Bcro}] cro}
+;\;
+\ce{BB_{cro} ->[\alpha_{BBcro}] cro}
+\\[.2in]
+\text{where: } \alpha_{Ucro} >> \alpha_{Bcro} >> \alpha_{BBcro}
+\\[.4in]
+\ce{cro ->[\gamma_{cro}] \emptyset}
+;\;
+\ce{cI ->[\gamma_{cI}] \emptyset}
+$$
+
+<h3><i>QSSA Reaction Network ODEs</i></h3>
+I outline the QSSA equations which describe the dimerization of repressors.
+At QSSA, $\frac{d[cro]}{dt} = \frac{d[cro_2]}{dt} = 0$. The following equations are derived from this statement:
+
+$$
+[cro]_{tot} = [cro] + 2 [cro_2]
+\\
+[cro]^2 k_{dcro} = [cro_2] k_{-dcro}
+;\quad
+[cro_2] = [cro]^2 \frac{k_{dcro}}{k_{-dcro}}
+\\[.4in]
+[cI]_{tot} = [cI] + 2 [cI]
+\\
+[cI]^2 k_{dcI} = [cI_2] k_{-dcI}
+;\quad
+[cI_2] = [cI]^2 \frac{k_{dcI}}{k_{-dcI}}
+$$
+I then describe the binding of the cro dimer to the DNA region controlling cI transcription.
+Our result is a member of the Generalized Hill function family.
+$$
+[DNA_{cI}]_{tot} = [D_{cI}] = [U_{cI}] + [B_{cI}] = 1
+\\
+\frac{d[U_{cI}]}{dt} = \frac{d[B_{cI}]}{dt} = 0
+\\
+[U_{cI}] [cro_2] k_{BcI} = [B_{cI}] k_{-BcI} = 0
+\\
+= ([D_{cI}] - [U_{cI}]) k_{-BcI}
+\\
+[U_{cI}] = [D_{cI}] / (1 + [cro_2] \frac{k_{BcI}}{k_{-BcI}})
+\\
+[U_{cI}] = \frac{1}{1 + (\frac{[cro]}{c_{cro}})^2}
+\\
+\text{where } c_{cro} = (\frac{k_{-BcI} k_{-Dcro}}{k_{BcI} k_{Dcro}})^{1/2}
+$$
+Ignoring any production from the bound states, we can now model the production of protein cI as follows:
+$$
+\dot{[cI]} = [U_{cI}] \alpha_{UcI} + [B_{cI}] \alpha_{BcI} - [cI] \gamma_{cI} = [U_{cI}] \alpha_{UcI} - [cI] \gamma_{cI}
+\\
+\dot{[cI]} = \frac{\alpha_{UcI}}{1 + (\frac{[cro]}{c_{cro}})^2} - [cI] \gamma_{cI}
+$$
+We may model production of cro in a very similar manner.
+However, given the fact that there are two possible binding sites for cI, we must slightly modify our formulation.
+$$
+[DNA_{cro}]_{tot} = [D_{cro}] = [U_{cro}] + [B_{cro}] + [BB_{cro}] = 1
+\\
+\frac{d[U_{cro}]}{dt} = \frac{d[B_{cro}]}{dt} = \frac{d[BB_{cro}]}{dt} = 0
+$$
+To simplify this problem, we can consider each of the two binding sites separately.
+$$
+[U_{cro}] [cI_2] k_{Bcro} = [B_{cro}] k_{-Bcro} = 0
+\\
+= ([D_{cro}] - [U_{cro}]) k_{-Bcro}
+\\
+[U_{cro}] = [D_{cro}] / (1 + [cI_2] \frac{k_{Bcro}}{k_{-Bcro}})
+\\
+[U_{cro}] = \frac{1}{1 + (\frac{[cI]}{c_{cI}})^2}
+\\
+\text{where } c_{cI} = (\frac{k_{-Bcro} k_{-DcI}}{k_{Bcro} k_{DcI}})^{1/2}
+$$
+We can then redefine our unbound state as follows, only considering production for the fully unbound state.
+$$
+[U_{cro}] = [D_{cro}](\text{Prop Unbound Site 1}) (\text{Prop Unbound Site 1})
+\\
+= (\frac{1}{1 + (\frac{[cI]}{c_{cI}})^2}) (\frac{1}{1 + (\frac{[cI]}{c_{cI}})^2})
+\\
+= \frac{1}{((\frac{[cI]}{c_{cI}})^2 + 1)^2}
+\\
+\dot{[cro]} = [U_{cro}] \alpha_{Ucro} + [B_{cro}] \alpha_{Bcro} + [BB_{cro}] \alpha_{BBcro} - [cI] \gamma_{cI}
+= [U_{cro}] \alpha_{Ucro} - [cro] \gamma_{cro}
+\\
+\dot{[cro]} = \frac{\alpha_{Ucro}}{((\frac{[cI]}{c_{cI}})^2 + 1)^2} - [cro] \gamma_{cro}
+$$
